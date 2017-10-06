@@ -1,5 +1,5 @@
 const $ = require('jquery')
-const slick = require('../vendor/slick')
+const slick = require('slick-carousel')
 
 const prevArrow = '<button type="button" role="navigation" class="slick-arrow-prev"></button>'
 const nextArrow = '<button type="button" role="navigation" class="slick-arrow-next"></button>'

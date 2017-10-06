@@ -8,6 +8,7 @@
 /* eslint no-undef: "error" */
 
 const $ = require('jquery')
+const isotope = require('isotope-layout')
 
 $(document).ready(() => {
   if (typeof FWP !== 'object') {
