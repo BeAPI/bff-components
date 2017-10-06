@@ -1,0 +1,15 @@
+.wp-pagenavi {
+	text-align: center;
+	@media screen and (max-width: $tablet-medium) {
+		.pages,
+		.first,
+		.last {
+			display: none;
+		}
+		.current,
+		.previouspostslink,
+		.nextpostslink {
+			display: inline-block;
+		}
+	}
+}
