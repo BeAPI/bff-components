@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', initRelocate(mediaQuery));
 // Function to do something with the media query
 function initRelocate (mediaQuery) {
   if (mediaQuery.matches) {
-    reloacteFoo('dekstop')
+    reloacteFoo('desktop')
   } else {
     reloacteFoo('mobile')
   }
