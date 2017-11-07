@@ -24,7 +24,7 @@ $.extend(true, $.magnificPopup.defaults, {
 })
 
 // lightbox in wysiwyg WP content for images AND native WP gallery
-$('.entry__content').each(() => { // the containers for all your galleries
+$('.entry__content').each(function () { // the containers for all your galleries
   $(this).find("a[href$='.png'], a[href$='.jpg'], a[href$='.gif']").magnificPopup({
     type: 'image',
     gallery: {
