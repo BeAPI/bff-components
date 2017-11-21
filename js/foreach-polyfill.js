@@ -1,3 +1,6 @@
+/**
+ * This polyfill adds compatibility to all Browsers supporting ES5
+ */
 if (window.NodeList && !NodeList.prototype.forEach) {
   NodeList.prototype.forEach = function (callback, thisArg) {
     thisArg = thisArg || window
