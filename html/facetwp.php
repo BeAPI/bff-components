@@ -28,6 +28,84 @@
                 8
             </div>
         </div>
+        <div class="facetwp-template" data-name="cars">
+            <div class="car-item" style="position:relative">
+                <img src="https://facetwp.com/wp-content/themes/fwp/img/cars/Acura_ILX.jpg?1" alt="">
+                <div class="car-desc" style="position:absolute;top:0; background:rgba(255,255,255,0.9); padding:10px 20px; font-size:13px">
+                    <div class="car-title"><a href="javascript:alert('This is a link')">Acura ILX</a></div>
+                    <div class="car-msrp">from $34,980</div>
+                    <div class="car-stats">
+                        <div class="car-mpg">
+                            <strong>MPG:</strong>
+                            25 city
+                            35 hwy
+                        </div>
+                        <div class="car-power">
+                            <strong>Power:</strong>
+                            201 hp
+                            180 ft/lb
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="car-item" style="position:relative">
+                <img src="https://facetwp.com/wp-content/themes/fwp/img/cars/Acura_MDX.jpg?1" alt="">
+                <div class="car-desc" style="position:absolute;top:0; background:rgba(255,255,255,0.9); padding:10px 20px; font-size:13px">
+                    <div class="car-title"><a href="javascript:alert('This is a link')">Acura MDX</a></div>
+                    <div class="car-msrp">from $58,400</div>
+                    <div class="car-stats">
+                        <div class="car-mpg">
+                            <strong>MPG:</strong>
+                            19 city
+                            26 hwy
+                        </div>
+                        <div class="car-power">
+                            <strong>Power:</strong>
+                            290 hp
+                            267 ft/lb
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="car-item" style="position:relative">
+                <img src="https://facetwp.com/wp-content/themes/fwp/img/cars/Acura_NSX.jpg?1" alt="">
+                <div class="car-desc" style="position:absolute;top:0; background:rgba(255,255,255,0.9); padding:10px 20px; font-size:13px">
+                    <div class="car-title"><a href="javascript:alert('This is a link')">Acura NSX</a></div>
+                    <div class="car-msrp">from $156,000</div>
+                    <div class="car-stats">
+                        <div class="car-mpg">
+                            <strong>MPG:</strong>
+                            21 city
+                            22 hwy
+                        </div>
+                        <div class="car-power">
+                            <strong>Power:</strong>
+                            573 hp
+                            476 ft/lb
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="car-item" style="position:relative">
+                <img src="https://facetwp.com/wp-content/themes/fwp/img/cars/Acura_RDX.jpg?1" alt="">
+                <div class="car-desc" style="position:absolute;top:0; background:rgba(255,255,255,0.9); padding:10px 20px; font-size:13px">
+                    <div class="car-title"><a href="javascript:alert('This is a link')">Acura RDX</a></div>
+                    <div class="car-msrp">from $43,720</div>
+                    <div class="car-stats">
+                        <div class="car-mpg">
+                            <strong>MPG:</strong>
+                            19 city
+                            27 hwy
+                        </div>
+                        <div class="car-power">
+                            <strong>Power:</strong>
+                            279 hp
+                            252 ft/lb
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="facetwp-pager">
             <span class="facetwp-pager-label">Page 1 of 92</span>
             <a class="facetwp-page active" data-page="1">1</a>
