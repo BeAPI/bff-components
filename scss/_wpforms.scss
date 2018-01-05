@@ -1,0 +1,223 @@
+/* Wpforms css
+-------------------------------------------------------------- */
+
+.wpforms-clear:before {
+	content: " ";
+	display: table;
+}
+
+.wpforms-clear:after {
+	clear: both;
+	content: " ";
+	display: table;
+}
+
+.wpforms-container-full .wpforms-form .wpforms-field-sublabel {
+    display: block;
+    font-size: 13px;
+    float: none;
+    font-weight: 400;
+    line-height: 1.3;
+    margin: 4px 0 0;
+    padding: 0;
+}
+
+/* Basic Field proprties
+----------------------------------------------------------------------------- */
+
+/* Field sizes - medium */
+.wpforms-container-full .wpforms-form input.wpforms-field-medium,
+.wpforms-container-full .wpforms-form select.wpforms-field-medium,
+.wpforms-container-full .wpforms-form .wpforms-field-row.wpforms-field-medium {
+	max-width: 60%;
+}
+
+.wpforms-container-full .wpforms-form textarea.wpforms-field-medium {
+	height: 120px;
+}
+
+/* Field sizes - small */
+.wpforms-container-full .wpforms-form input.wpforms-field-small,
+.wpforms-container-full .wpforms-form select.wpforms-field-small,
+.wpforms-container-full .wpforms-form .wpforms-field-row.wpforms-field-small {
+	max-width: 25%;
+}
+
+.wpforms-container-full .wpforms-form textarea.wpforms-field-small {
+	height: 70px;
+}
+
+/* Field sizes - large */
+.wpforms-container-full .wpforms-form input.wpforms-field-large,
+.wpforms-container-full .wpforms-form select.wpforms-field-large,
+.wpforms-container-full .wpforms-form .wpforms-field-row.wpforms-field-large {
+	max-width: 100%;
+}
+
+.wpforms-container-full .wpforms-form textarea.wpforms-field-large {
+	height: 220px;
+}
+
+/* Field container */
+.wpforms-container-full .wpforms-form .wpforms-field {
+	padding: 10px 0;
+	clear: both;
+}
+
+
+.wpforms-container-full .wpforms-form .wpforms-required-label {
+	color: $maincolor;
+	font-weight: 400;
+}
+
+
+/* Columns
+----------------------------------------------------------------------------- */
+
+/* User column classes  */
+.wpforms-container-full .wpforms-form .wpforms-five-sixths,
+.wpforms-container-full .wpforms-form .wpforms-four-sixths,
+.wpforms-container-full .wpforms-form .wpforms-four-fifths,
+.wpforms-container-full .wpforms-form .wpforms-one-fifth,
+.wpforms-container-full .wpforms-form .wpforms-one-fourth,
+.wpforms-container-full .wpforms-form .wpforms-one-half,
+.wpforms-container-full .wpforms-form .wpforms-one-sixth,
+.wpforms-container-full .wpforms-form .wpforms-one-third,
+.wpforms-container-full .wpforms-form .wpforms-three-fourths,
+.wpforms-container-full .wpforms-form .wpforms-three-fifths,
+.wpforms-container-full .wpforms-form .wpforms-three-sixths,
+.wpforms-container-full .wpforms-form .wpforms-two-fourths,
+.wpforms-container-full .wpforms-form .wpforms-two-fifths,
+.wpforms-container-full .wpforms-form .wpforms-two-sixths,
+.wpforms-container-full .wpforms-form .wpforms-two-thirds {
+	float: left;
+	margin-left: 4%;
+	clear: none;
+}
+
+.wpforms-container-full .wpforms-form .wpforms-one-half,
+.wpforms-container-full .wpforms-form .wpforms-three-sixths,
+.wpforms-container-full .wpforms-form .wpforms-two-fourths {
+	width: 48%;
+}
+
+.wpforms-container-full .wpforms-form .wpforms-first {
+	clear: both !important;
+	margin-left: 0 !important;
+}
+
+/* User list column classes  */
+.wpforms-container-full .wpforms-form .wpforms-checkbox-2-columns ul,
+.wpforms-container-full .wpforms-form .wpforms-multiplechoice-2-columns ul,
+.wpforms-container-full .wpforms-form .wpforms-list-2-columns ul,
+.wpforms-container-full .wpforms-form .wpforms-checkbox-3-columns ul,
+.wpforms-container-full .wpforms-form .wpforms-multiplechoice-3-columns ul,
+.wpforms-container-full .wpforms-form .wpforms-list-3-columns ul {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.wpforms-container-full .wpforms-form .wpforms-checkbox-2-columns ul li,
+.wpforms-container-full .wpforms-form .wpforms-multiplechoice-2-columns ul li,
+.wpforms-container-full .wpforms-form .wpforms-list-2-columns ul li {
+	width: 50%;
+	display: block;
+	padding-right: 26px !important;
+}
+
+.wpforms-container-full .wpforms-form .wpforms-checkbox-3-columns ul li,
+.wpforms-container-full .wpforms-form .wpforms-multiplechoice-3-columns ul li,
+.wpforms-container-full .wpforms-form .wpforms-list-3-columns ul li {
+	width: 33.3333%;
+	display: block;
+	padding-right: 26px !important;
+}
+
+/* Legacy, for BC */
+.wpforms-container-full .wpforms-form .wpforms-field.wpforms-first-half {
+	float: left;
+	width: 48%;
+	clear: both;
+}
+.wpforms-container-full .wpforms-form .wpforms-field.wpforms-last-half {
+	float: right;
+	width: 48%;
+	clear: none;
+}
+.wpforms-container-full .wpforms-form .wpforms-field.wpforms-first-third {
+	float: left;
+	width: 30.666666667%;
+	clear: both;
+}
+.wpforms-container-full .wpforms-form .wpforms-field.wpforms-middle-third  {
+	float: left;
+	width: 30.666666667%;
+	margin-left: 4%;
+	clear: none;
+}
+.wpforms-container-full .wpforms-form .wpforms-field.wpforms-last-third {
+	float: right;
+	width: 30.666666667%;
+	clear: none;
+}
+.wpforms-container-full .wpforms-form .wpforms-last {
+	float: right !important;
+	margin-right: 0 !important;
+	clear: none;
+}
+
+
+/* Preset Layouts
+----------------------------------------------------------------------------- */
+
+/* Single line */
+.wpforms-container-full.inline-fields {
+	overflow: hidden;
+}
+
+.wpforms-container-full.inline-fields .wpforms-form .wpforms-field-container  {
+	display: table;
+	width: calc(100% - 160px);
+	float: left;
+}
+
+.wpforms-container-full.inline-fields .wpforms-form .wpforms-field  {
+	display: table-cell;
+	padding-right: 2%;
+}
+
+.wpforms-container-full.inline-fields .wpforms-form .wpforms-submit-container {
+	float: right;
+	width: 160px;
+	clear: none;
+}
+
+.wpforms-container-full.inline-fields .wpforms-form .wpforms-submit {
+	display: block;
+	width: 100%;
+}
+
+.wpforms-container-full.inline-fields .wpforms-form input.wpforms-field-medium,
+.wpforms-container-full.inline-fields .wpforms-form select.wpforms-field-medium,
+.wpforms-container-full.inline-fields .wpforms-form .wpforms-field-row.wpforms-field-medium {
+	max-width: 100%;
+}
+
+
+/* Misc
+----------------------------------------------------------------------------- */
+
+.wpforms-container-full {
+	margin-bottom: 24px;
+}
+
+.wpforms-container-full .wpforms-form h3 {
+	font-size: 24px;
+}
+
+/* Honeypot Area */
+.wpforms-container-full .wpforms-form .wpforms-field-hp {
+	display: none !important;
+	position: absolute !important;
+	left: -9000px !important;
+}
