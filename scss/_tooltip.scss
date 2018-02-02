@@ -1,5 +1,21 @@
-*[data-tooltip] {
+/**
+ * Tooltip
+ *
+ * Tooltip template.
+ *
+ * @section Tooltip
+ * @page patterns
+ *
+ * @example
+ * <p data-tooltip="ceci est un tooltip" data-placement="top">Top</p>
+ * <p data-tooltip="ceci est un tooltip" data-placement="left">Left</p>
+ * <p data-tooltip="ceci est un tooltip" data-placement="right">Right</p>
+ * <p data-tooltip="ceci est un tooltip" data-placement="bottom">Bottom</p>
+ */
+
+ *[data-tooltip] {
     position: relative;
+    display: inline;
     &:before, &:after {
         position: absolute;
         z-index: 10;
