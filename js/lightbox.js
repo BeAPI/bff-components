@@ -1,34 +1,52 @@
 /**
- * Lightbox
- * http://dimsemenov.com/plugins/magnific-popup/documentation.html
+ * Import modaal.js with NPM and modaal.scss with composerjs
+ * http://www.humaan.com/modaal/
+ * https://github.com/humaan/Modaal
  */
 
-var $ = require('jquery')
-require('../vendor/jquery.mfp')
+import $ from 'jquery'
+import 'modaal/dist/js/modaal'
 
-// Lightbox french translation
-$.extend(true, $.magnificPopup.defaults, {
-  tClose: 'Fermer (Esc)',
-  tLoading: 'Chargement...',
-  gallery: {
-    tPrev: 'Précédent',
-    tNext: 'Suivant',
-    tCounter: '%curr% sur %total%'
-  },
-  image: {
-    tError: '<a href="%url%">L\'image</a> ne peut pas être chargé.' // Error message when image could not be loaded
-  },
-  ajax: {
-    tError: '<a href="%url%">Le contenu</a> ne peut pas être chargé.' // Error message when ajax request failed
+/**
+ * LightboxModaal initialize
+ */
+const LightboxModaal = () => {
+  const self = {}
+  const opts = {
+    type: 'image'
   }
-})
 
-// lightbox in wysiwyg WP content for images AND native WP gallery
-$('.entry__content').each(function () { // the containers for all your galleries
-  $(this).find("a[href$='.png'], a[href$='.jpg'], a[href$='.gif']").magnificPopup({
-    type: 'image',
-    gallery: {
-      enabled: true
-    }
-  })
-})
+  /**
+   * Initialize modaal galleries for entries links
+   * @return {[type]} [description]
+   */
+  const entryInit = () => {
+    // lightbox in wysiwyg WP content for images AND native WP gallery
+    $('.entry__content').each(function () { // the containers for all your galleries
+      let instance = 0
+      let imagesInstances = $(this).find("a[href$='.png'], a[href$='.jpg'], a[href$='.gif']")
+
+      // Organize galleries by container
+      imagesInstances.parent().each(function () {
+        let gallery = `js-gallery_${instance}`
+
+        $(this).addClass(gallery)
+        $(this).find("a[href$='.png'], a[href$='.jpg'], a[href$='.gif']").attr('rel', gallery).modaal(opts)
+
+        instance++
+      })
+    })
+  }
+
+  /**
+   * [publicMethod description]
+   * @return {[type]} [description]
+   */
+  self.init = () => {
+    entryInit()
+  }
+
+  return self
+}
+
+LightboxModaal().init()
