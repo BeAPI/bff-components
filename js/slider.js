@@ -1,4 +1,4 @@
-import './polyfill/forEach'
+import '../polyfill/forEach'
 import $ from 'jquery'
 import 'slick-carousel'
 
