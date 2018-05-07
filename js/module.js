@@ -1,32 +1,15 @@
-/**
- * [MODULE description]
- */
-let MODULE = () => {
-  let self = {}
-  let privateVar = 10
-
-  self.publicAttr = "bonjour"
-
-  /**
-   * [privateMethod description]
-   * @return {[type]} [description]
-   */
-  let privateMethod = () => {
-    console.log('I am private !')
+class Module {
+  constructor() {
+    this.var = 10
   }
-
   /**
-   * [publicMethod description]
-   * @return {[type]} [description]
+   * [Method description]
+   *
    */
-  self.publicMethod = () => {
-    console.log('I am accessible !')
+  method() {
+    console.log(`I am ${this.var}`)
   }
-
-  return self
 }
 
-MODULE().publicMethod() // return 'I am accessible !'
-MODULE().privateMethod() // return an error
-
-console.log(MODULE().publicAttr) // return 'bonjour'
+const myModule = new Module()
+myModule.method()

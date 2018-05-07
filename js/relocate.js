@@ -1,24 +1,35 @@
-// Initialize the media query
-var bp = 1024
-var mediaQuery = window.matchMedia(`(min-width: ${bp}px)`)
+class Relocate {
+  /**
+   *
+   * @param {number} breakpoint
+   */
+  constructor(breakpoint = 1024) {
+    this.breakpoint = breakpoint
+    this.mediaQuery = window.matchMedia(`(min-width: ${this.breakpoint}px)`)
+    this.initRelocate = this.initRelocate.bind(this)
 
-// Add a listen event
-mediaQuery.addListener(initRelocate)
-document.addEventListener('DOMContentLoaded', initRelocate(mediaQuery));
+    // Add a listen event
+    this.mediaQuery.addListener(this.initRelocate)
+    this.initRelocate()
+  }
 
-// Function to do something with the media query
-function initRelocate (mediaQuery) {
-  if (mediaQuery.matches) {
-    reloacteFoo('desktop')
-  } else {
-    reloacteFoo('mobile')
+  /**
+   * Function to do something with the media query
+   */
+  initRelocate() {
+    if (this.mediaQuery.matches) {
+      this.reloacteFoo('desktop')
+    } else {
+      this.reloacteFoo('mobile')
+    }
+  }
+
+  reloacteFoo(match) {
+    if (match === 'desktop') {
+      // Do something for desktop breakpoint
+    } else if (match === 'mobile') {
+      // Do something for mobile breakpoint
+    }
   }
 }
-
-function reloacteFoo (match) {
-  if (match === 'desktop') {
-    // Do something for desktop breakpoint
-  } else if (match === 'mobile') {
-    // Do something for mobile breakpoint
-  }
-}
+new Relocate(1024)
