@@ -1,52 +1,41 @@
-/**
- * Import modaal.js with NPM and modaal.scss with composerjs
- * http://www.humaan.com/modaal/
- * https://github.com/humaan/Modaal
- */
+// /**
+//  * Import modaal.js with NPM and modaal.scss with composerjs
+//  * http://www.humaan.com/modaal/
+//  * https://github.com/humaan/Modaal
+//  */
 
 import $ from 'jquery'
 import 'modaal/dist/js/modaal'
-
-/**
- * LightboxModaal initialize
- */
-const LightboxModaal = () => {
-  const self = {}
-  const opts = {
-    type: 'image'
-  }
-
+class Lightbox {
   /**
-   * Initialize modaal galleries for entries links
-   * @return {[type]} [description]
+   *
+   * @param {string} selector
+   * @param {Object} options
+   * @param {string} container
    */
-  const entryInit = () => {
-    // lightbox in wysiwyg WP content for images AND native WP gallery
-    $('.entry__content').each(function () { // the containers for all your galleries
+
+  constructor(
+    selector = "a[href$='.png'], a[href$='.jpg'], a[href$='.gif']",
+    options = { type: 'image' },
+    container = '.entry__content'
+  ) {
+    this.selector = selector
+    this.options = options
+    this.container = container
+    const _this = this
+    $(this.container).each(function () {
       let instance = 0
-      let imagesInstances = $(this).find("a[href$='.png'], a[href$='.jpg'], a[href$='.gif']")
-
-      // Organize galleries by container
+      const imagesInstances = $(this).find(_this.selector)
       imagesInstances.parent().each(function () {
-        let gallery = `js-gallery_${instance}`
-
-        $(this).addClass(gallery)
-        $(this).find("a[href$='.png'], a[href$='.jpg'], a[href$='.gif']").attr('rel', gallery).modaal(opts)
-
+        const galleryClass = `js-gallery_${instance}`
+        $(this).addClass(galleryClass)
+        $(this)
+          .find(_this.selector)
+          .attr('rel', galleryClass)
+          .modaal(_this.options)
         instance++
       })
     })
   }
-
-  /**
-   * [publicMethod description]
-   * @return {[type]} [description]
-   */
-  self.init = () => {
-    entryInit()
-  }
-
-  return self
 }
-
-LightboxModaal().init()
+new Lightbox()
