@@ -5,7 +5,7 @@ import 'slick-carousel'
 class Slider {
   /**
    * @param {Object} element
-   * @param {Object} options
+   * @param {Object} opts
    */
   constructor(element, opts) {
     this.element = element
@@ -16,19 +16,21 @@ class Slider {
     this.printMediaQuery = window.matchMedia('print')
     this.printMediaQuery.addListener(this.handleMatchMedia)
     this.handleMatchMedia()
-
-    this.init()
   }
 
   init() {
     $(this.element).slick(this.opts)
   }
   destroy() {
-    $(this.element).slick('unslick')
+    if (!$(this.element).hasClass('slick-initialized')) {
+      return false
+    } else {
+      $(this.element).slick('unslick')
+    }
   }
   handleMatchMedia() {
     if (!this.printMediaQuery.matches) {
-      return false
+      this.init()
     } else {
       this.destroy()
     }
