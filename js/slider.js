@@ -15,6 +15,7 @@ class Slider {
 
     this.printMediaQuery = window.matchMedia('print')
     this.printMediaQuery.addListener(this.handleMatchMedia)
+    this.handleMatchMedia()
 
     this.init()
   }
