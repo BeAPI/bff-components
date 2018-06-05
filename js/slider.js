@@ -5,14 +5,6 @@ import 'slick-carousel'
 class Slider {
   /**
    *
-   * @param {string} selector
-   * @param {Object} options
-   */
-  static bind(selector, options) {
-    ;[].forEach.call(document.querySelectorAll(selector), element => new Slider(element, options))
-  }
-  /**
-   *
    * @param {Object} element
    * @param {Object} options
    */
@@ -43,4 +35,4 @@ const options = {
   }]
 }
 
-Slider.bind('.slider', options)
+new Slider('.slider', options)
