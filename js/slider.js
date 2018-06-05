@@ -4,14 +4,33 @@ import 'slick-carousel'
 
 class Slider {
   /**
-   *
    * @param {Object} element
    * @param {Object} options
    */
-  constructor(element, options = false) {
+  constructor(element, opts) {
     this.element = element
-    this.slickOpts = options ? options : { arrows: true, slidesToShow: 1 }
-    $(element).slick(this.slickOpts)
+    this.opts = opts
+
+    this.handleMatchMedia = this.handleMatchMedia.bind(this)
+
+    this.printMediaQuery = window.matchMedia('print')
+    this.printMediaQuery.addListener(this.handleMatchMedia)
+
+    this.init()
+  }
+
+  init() {
+    $(this.element).slick(this.opts)
+  }
+  destroy() {
+    $(this.element).slick('unslick')
+  }
+  handleMatchMedia() {
+    if (!this.printMediaQuery.matches) {
+      return false
+    } else {
+      this.destroy()
+    }
   }
 }
 
