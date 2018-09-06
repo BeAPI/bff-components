@@ -13,7 +13,7 @@ class TextTruncate {
     this.ellipsis = ellipsis
     this.initialSize = { width: element.clientWidth, height: element.clientHeight }
     this.textContent = typeof element.textContent === 'undefined' ? 'innerText' : 'textContent'
-    this.originalText = element[this.textContent]
+    this.originalText = element.children[0][this.textContent]
     this.init()
     this.compareSizes = debounce(this.compareSizes, 200)
   }
@@ -48,7 +48,7 @@ class TextTruncate {
    * @param {HTMLElement} element
    */
   truncateByHeight(element) {
-    const parts = element[this.textContent].split(' ')
+    const parts = element.children[0][this.textContent].split(' ')
     let height = this.getHeight(element)
 
     while (height > element.clientHeight) {
