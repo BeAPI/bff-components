@@ -11,7 +11,7 @@ class TextTruncate {
   constructor(element, ellipsis = '...') {
     this.element = element
     this.ellipsis = ellipsis
-    this.intialSize = { width: element.clientWidth, height: element.clientHeight }
+    this.initialSize = { width: element.clientWidth, height: element.clientHeight }
     this.textContent = typeof element.textContent === 'undefined' ? 'innerText' : 'textContent'
     this.originalText = element[this.textContent]
     this.init()
@@ -28,7 +28,7 @@ class TextTruncate {
    * Compare sizes between resize if we can show more text
    */
   compareSizes() {
-    if (this.intialSize.width !== this.element.clientWidth || this.intialSize.height !== this.element.clientHeight) {
+    if (this.initialSize.width !== this.element.clientWidth || this.initialSize.height !== this.element.clientHeight) {
       this.resetText(this.element)
       this.truncateByHeight(this.element)
     } else {
@@ -61,7 +61,7 @@ class TextTruncate {
       parts.pop()
       element.children[0][this.textContent] = `${parts.join(' ')}${this.ellipsis}`
     }
-    this.intialSize = { width: element.clientWidth, height: element.clientHeight }
+    this.initialSize = { width: element.clientWidth, height: element.clientHeight }
   }
 
   /**
