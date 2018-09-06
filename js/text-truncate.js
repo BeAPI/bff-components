@@ -54,12 +54,12 @@ class TextTruncate {
     while (height > element.clientHeight) {
       if (element.children.length > 0) {
         const elements = element.children
-        ;[].forEach.call(elements, el => (height = el.offsetHeight))
+          ;[].forEach.call(elements, el => (height = el.offsetHeight))
       } else {
         height = element.children[0].offsetHeight
       }
       parts.pop()
-      element.children[0][this.textContent] = `${parts.join(' ')} ...`
+      element.children[0][this.textContent] = `${parts.join(' ')}${this.ellipsis}`
     }
     this.intialSize = { width: element.clientWidth, height: element.clientHeight }
   }
@@ -72,7 +72,7 @@ class TextTruncate {
     let height = 0
     if (element.children.length > 0) {
       const elements = element.children
-      ;[].forEach.call(elements, el => (height = el.offsetHeight))
+        ;[].forEach.call(elements, el => (height = el.offsetHeight))
     } else {
       element.innerHTML = `<p>${element.innerText}</p>`
       height = element.children[0].offsetHeight
