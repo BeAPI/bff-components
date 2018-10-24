@@ -17,3 +17,4 @@ To not reinvent the wheel, there is a list of approved npm packages.
 | [masonry-layout](https://www.npmjs.com/package/masonry-layout)  | Build a absolute position grid  | `npm install masonry-layout` | 🚫 |
 | [isotope-layout](https://www.npmjs.com/package/isotope-layout)  | Filter & sort magical layouts  | `npm install isotope-layout` | 🚫 |
 | [whatwg-fetch](https://www.npmjs.com/package/whatwg-fetch)  | A window.fetch polyfill  | `npm install whatwg-fetch` | 🚫 |
+| [smooth-scroll](https://www.npmjs.com/package/smooth-scroll)  | A lightweight script to animate scrolling to anchor links.  | `npm install smooth-scroll` | 🚫 |
