@@ -1,86 +1,107 @@
-import { debounce } from './utils'
+// import { debounce } from './utils'
 
 class TextTruncate {
   /**
-   * Bind select that has to be wrapped
-   * @param {string} selector
+   * Class constructor
+   * @param {String} target
+   * @param {Object} opts
+   * @param {String} opts.character
+   * @param {String} opts.classname
+   * @param {Boolean} opts.spaces
    */
-  static bind(selector = '[data-text-truncate]', ellipsis) {
-    ;[].forEach.call(document.querySelectorAll(selector), element => new TextTruncate(element, ellipsis))
+  constructor(target, opts) {
+    this.target = target
+    this.character = opts.character || '…'
+    this.classname = opts.classname || 'js-tt'
+    this.spaces = typeof opts.spaces === 'boolean' ? opts.spaces : true
+    this.charHtml = `<span class="js-tt-char">${this.character}</span>`
+
+    // If you want to debounce the event listener, uncomment this line and import a debounce function
+    // this.init = debounce(this.init, 300)
+    window.addEventListener('resize', this.init.bind(this))
   }
-  constructor(element, ellipsis = '...') {
-    this.element = element
-    this.ellipsis = ellipsis
-    this.initialSize = { width: element.clientWidth, height: element.clientHeight }
-    this.textContent = typeof element.textContent === 'undefined' ? 'innerText' : 'textContent'
-    this.originalText = element.children[0][this.textContent]
-    this.init()
-    this.compareSizes = debounce(this.compareSizes, 200)
-  }
+
   /**
    * Init Class
    */
   init() {
-    window.addEventListener('resize', this.compareSizes.bind(this))
-    this.truncateByHeight(this.element)
-  }
-  /**
-   * Compare sizes between resize if we can show more text
-   */
-  compareSizes() {
-    if (this.initialSize.width !== this.element.clientWidth || this.initialSize.height !== this.element.clientHeight) {
-      this.resetText(this.element)
-      this.truncateByHeight(this.element)
-    } else {
-      return false
-    }
-  }
-  /**
-   * Display original text
-   * @param {HTMLElement} element
-   */
-  resetText(element) {
-    element.children[0][this.textContent] = this.originalText
-  }
-  /**
-   * Truncates the text of an element depending its height.
-   *
-   * @param {HTMLElement} element
-   */
-  truncateByHeight(element) {
-    const parts = element.children[0][this.textContent].split(' ')
-    let height = this.getHeight(element)
+    const els = document.querySelectorAll(this.target)
+    if (!els.length) return false
 
-    while (height > element.clientHeight) {
-      if (element.children.length > 0) {
-        const elements = element.children
-          ;[].forEach.call(elements, el => (height = el.offsetHeight))
-      } else {
-        height = element.children[0].offsetHeight
+    for (let i = 0; i < els.length; i += 1) {
+      const el = els[i]
+      this.styles = el.style
+      this.textProp = el.textContent === undefined ? 'innerText' : 'textContent'
+
+      this.clean(el)
+
+      const words = this.spaces ? el[this.textProp].split(' ') : el[this.textProp]
+      if (words.length < 2) continue
+
+      this.removeElHeightAttr(el)
+
+      if (el.offsetHeight <= this.maxHeight) {
+        this.styles.height = this.heightStyle
+        this.styles.maxHeight = this.maxHeightStyle
+        continue
       }
-      parts.pop()
-      element.children[0][this.textContent] = `${parts.join(' ')}${this.ellipsis}`
+
+      this.loopOverWords(words, el)
     }
-    this.initialSize = { width: element.clientWidth, height: element.clientHeight }
+  }
+  /**
+   * If already truncated, recapture orginal text
+   * @param {HTMLElement} el
+   */
+  clean(el) {
+    const span = el.querySelector(`.${this.classname}`)
+    if (span) {
+      el.removeChild(el.querySelector('.js-tt-char'))
+      el[this.textProp] = el[this.textProp]
+    }
   }
 
   /**
-   * Get height of innerText
-   * @param {HTMLElement} element
+   * Remove CSS height attributes to compare height and maxHeight
+   * @param {HTMLElement} el
    */
-  getHeight(element) {
-    let height = 0
-    if (element.children.length > 0) {
-      const elements = element.children
-        ;[].forEach.call(elements, el => (height = el.offsetHeight))
-    } else {
-      element.innerHTML = `<p>${element.innerText}</p>`
-      height = element.children[0].offsetHeight
+  removeElHeightAttr(el) {
+    this.maxHeight = el.clientHeight
+    this.heightStyle = this.styles.height
+    this.styles.height = 'auto'
+    this.maxHeightStyle = this.styles.maxHeight
+    this.styles.maxHeight = 'none'
+  }
+
+  /**
+   * Add words until reach the original height of the element
+   * @param {Array} words
+   * @param {HTMLElement} el
+   */
+  loopOverWords(words, el) {
+    let max = words.length - 1
+    let min = 0
+    let pivot
+    while (min < max) {
+      pivot = (min + max + 1) >> 1 // eslint-disable-line no-bitwise
+      el[this.textProp] = this.spaces ? words.slice(0, pivot).join(' ') : words.slice(0, pivot)
+      el.insertAdjacentHTML('beforeend', this.charHtml)
+      if (el.offsetHeight > this.maxHeight) max = this.spaces ? pivot - 1 : pivot - 2
+      else min = pivot
     }
-    return height
+
+    el[this.textProp] = this.spaces ? words.slice(0, max).join(' ') : words.slice(0, max)
+    el.insertAdjacentHTML('beforeend', this.charHtml)
+    const diff = this.spaces ? ` ${words.slice(max).join(' ')}` : words.slice(max)
+
+    el.insertAdjacentHTML('beforeend', `<span class="${this.classname}" style="display:none;">${diff}</span>`)
+
+    this.styles.height = this.heightStyle
+    this.styles.maxHeight = this.maxHeightStyle
   }
 }
 
 export default TextTruncate
 
-TextTruncate.bind('[data-text-truncate]', '...')
+const trunc = new TextTruncate('.tt p', '...')
+trunc.init()
