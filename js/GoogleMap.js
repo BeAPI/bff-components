@@ -11,7 +11,7 @@ class Map {
         center: this.coordinates,
       })
 
-      if (pointer) {
+      if (this.pointer) {
         let marker // eslint-disable-line no-unused-vars
 
         marker = new google.maps.Marker({
