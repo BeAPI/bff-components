@@ -1,5 +1,5 @@
 class Map {
-  constructor(selector = document.getElementById('map'), pointer, coordinates = {}) {
+  constructor(selector = document.getElementById('map'), coordinates = {}, pointer) {
     this.selector = selector
     this.coordinates = coordinates
     this.pointer = pointer
@@ -11,13 +11,15 @@ class Map {
         center: this.coordinates,
       })
 
-      let marker // eslint-disable-line no-unused-vars
+      if (pointer) {
+        let marker // eslint-disable-line no-unused-vars
 
-      marker = new google.maps.Marker({
-        position: this.coordinates,
-        map: map,
-        icon: this.pointer,
-      })
+        marker = new google.maps.Marker({
+          position: this.coordinates,
+          map: map,
+          icon: this.pointer,
+        })
+      }
     } else {
       console.error('Google Maps API probably missed.')
     }
