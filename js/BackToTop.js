@@ -1,7 +1,6 @@
 class BackToTop {
-  constructor(offset = 100, duration = 300) {
+  constructor(offset = 100) {
     this.offset = offset
-    this.duration = duration
   }
   init() {
     this.buildBackToTopButton()
