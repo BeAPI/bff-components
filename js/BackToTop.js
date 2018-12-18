@@ -13,7 +13,7 @@ class BackToTop {
    */
   buildBackToTopButton() {
     const backToTopButton = document.createElement('button')
-    backToTopButton.classList.add('back-to-top', 'button', 'button--icon')
+    backToTopButton.classList.add('back-to-top', 'back-to-top--hidden', 'button', 'button--icon')
     backToTopButton.setAttribute('id', 'js-back-to-top')
     backToTopButton.setAttribute('data-goto', '0')
     backToTopButton.innerHTML =
