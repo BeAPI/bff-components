@@ -1,0 +1,12 @@
+.back-to-top {
+  $parent: &;
+
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  transition: opacity .3s ease;
+
+  &--hidden {
+    opacity: 0;
+  }
+}
