@@ -2,6 +2,7 @@
   $parent: &;
 
   position: fixed;
+  z-index: 999;
   bottom: 20px;
   right: 20px;
   transition: opacity .3s ease;
